@@ -11,7 +11,8 @@ export class APIServiceService {
   constructor(private http : HttpClient) { }
 
   getEmployees() : Observable<Employees[]>{
-    const url = 'http://localhost:3000/employees';
+    var url = 'http://localhost:3000/employees';
+    url = 'https://noderestapi1.000webhostapp.com/';
  
     return this.http.get<Employees[]>(url);
     
