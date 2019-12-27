@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <h1 class="display-3">Testing RestAPI</h1>
+  <p class="lead">RestAPI data binding app</p>
+</div>
+<div class="container">
+
+  <div>
+    <button class="btn btn-primary">Click check</button>
+  </div>
+  
+  <br>
+  <button type="button" class="btn btn-success">Karthick</button>
+  <br>
+  <form>
+    <div class="form-group">
+      <select class="form-control">
+      <option *ngFor="let emp of _employeesList">{{ emp.name }}</option>
+      </select>
+    </div>
+  </form>
+  
+</div>
