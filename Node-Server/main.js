@@ -43,3 +43,23 @@
 	    res.end(JSON.stringify(results));
 	  });
 	});
+
+	app.post('/register', (req, res) =>{
+		let emp = req.body
+		console.log("Got the req : "+emp.name, emp.age)
+		let sql = "insert into test(name,age) values('"+emp.name+"',"+emp.age+")"
+		connection.query(sql, function(error, results, fields){
+			if(error) throw error			
+			res.status(200).send(JSON.stringify(results))
+		})
+	})
+
+	app.post('/change', (req, res) =>{
+		let user = req.body
+		console.log("Change req gotten")
+		let sql = "update test set age="+user.age+" where name='"+user.name+"'"
+		connection.query(sql, function(error, results, fields){
+			if(error) throw error;			
+			res.status(200).send(JSON.stringify(results));			
+		})
+	})

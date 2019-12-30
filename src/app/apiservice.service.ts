@@ -12,7 +12,7 @@ export class APIServiceService {
 
   getEmployees() : Observable<Employees[]>{
     var url = 'http://localhost:3000/employees';
-    url = 'https://noderestapi1.000webhostapp.com/';
+    // url = 'https://noderestapi1.000webhostapp.com/';
  
     return this.http.get<Employees[]>(url);
     
