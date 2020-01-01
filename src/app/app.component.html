@@ -11,12 +11,13 @@
   <br>
   <button type="button" class="btn btn-success">Karthick</button>
   <br>
-  <form>
+
     <div class="form-group">
-      <select class="form-control">
-      <option *ngFor="let emp of _employeesList">{{ emp.name }} {{ emp.age }}</option>
+      <select class="form-control" [(ngModel)]="empSelected">
+       <option *ngFor="let emp of _employeesList" [value]="emp.id">{{ emp.name }} {{ emp.age }}</option>
       </select>
+      <p>Selected employee's ID = {{ empSelected }}</p>
     </div>
-  </form>
+
   
 </div>
