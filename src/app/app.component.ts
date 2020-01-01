@@ -16,10 +16,22 @@ export class AppComponent implements OnInit{
   constructor(private apiserve : APIServiceService){ }
 
   ngOnInit(){
+    this.setEmployees();    
+  }
+
+  setEmployees(){
     this.apiserve.getEmployees().subscribe(data=>{
       this._employeesList = data;
     })
+  }
 
+  removeEmp(user : Employees){
+    console.log(user);
+    /* this.apiserve.removeEmployee(user.name).subscribe(res=>{
+      console.log(res);
+    }); */
+    this.setEmployees();
+    console.log(this._employeesList);
   }
 
 }

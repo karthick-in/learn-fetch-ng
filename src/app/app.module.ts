@@ -6,10 +6,14 @@ import { AppComponent } from './app.component';
 import { AlertModule } from 'ngx-bootstrap';
 import { APIServiceService } from './apiservice.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

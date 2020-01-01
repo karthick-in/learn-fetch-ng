@@ -17,4 +17,15 @@ export class APIServiceService {
     return this.http.get<Employees[]>(url);
     
   }
+
+  registerEmployee(Emp){
+    var url = "http://localhost:3000/register";
+    return this.http.post<any[]>(url, Emp);
+  }
+
+  removeEmployee(empName){
+    var url = "http://localhost:3000/remove";
+    return this.http.delete(url,empName);
+  }
+
 }

@@ -2,22 +2,42 @@
   <h1 class="display-3">Testing RestAPI</h1>
   <p class="lead">RestAPI data binding app</p>
 </div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/register"> Register</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/login"> Login</a>
+    </li>
+  </ul>
+</nav>
+<br>
+
+
 <div class="container">
-
-  <div>
-    <button class="btn btn-primary">Click check</button>
-  </div>
-  
-  <br>
-  <button type="button" class="btn btn-success">Karthick</button>
-  <br>
-
     <div class="form-group">
       <select class="form-control" [(ngModel)]="empSelected">
        <option *ngFor="let emp of _employeesList" [value]="emp.id">{{ emp.name }} {{ emp.age }}</option>
       </select>
+      <button type="button" (click)="setEmployees()" class="btn btn-primary float-right"> Refresh list</button>
       <p>Selected employee's ID = {{ empSelected }}</p>
-    </div>
+    </div>        
 
-  
+<app-register (myEvent)="setEmployees()" *ngIf="false"></app-register>
+<router-outlet></router-outlet>
+
+<table class = "table">
+  <tr>
+    <th>ID</th><th>Name</th><th>Age</th><th>Delete</th>
+  </tr>
+  <tr *ngFor="let emp of _employeesList">
+    <td>{{emp.id}}</td><td>{{emp.name}}</td><td>{{emp.age}}</td>
+    <td><button type="button" (click)="removeEmp(emp)" class="btn btn-danger">Delete</button></td>
+  </tr>
+</table>
 </div>
