@@ -8,30 +8,45 @@ import { Employees } from './employees';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'MyApp';
-  _employeesList : Employees[];
-  empSelected : Number = 0;
+  _employeesList: Employees[];
+  empSelected: Number = 0;
 
-  constructor(private apiserve : APIServiceService){ }
+  constructor(private apiserve: APIServiceService) { }
 
-  ngOnInit(){
-    this.setEmployees();    
+  ngOnInit() {
+    this.setEmployees();
   }
 
-  setEmployees(){
-    this.apiserve.getEmployees().subscribe(data=>{
+  setEmployees() {
+    console.log("Im from setEmployees() ... ")
+    this.apiserve.getEmployees().subscribe(data => {
       this._employeesList = data;
     })
+    console.log(this._employeesList);
   }
 
-  removeEmp(user : Employees){
-    console.log(user);
-    /* this.apiserve.removeEmployee(user.name).subscribe(res=>{
-      console.log(res);
-    }); */
+  removeEmp(user: Employees) {
+    this.apiserve.removeEmployee(user).subscribe( // delete gonna return void
+      () => {
+        console.log("Employee " + user.name + " deleted ");
+        if (Error) console.log(Error);
+
+      });
     this.setEmployees();
-    console.log(this._employeesList);
+    this.setEmployees(); 
+  }
+
+  changeEmp(user: Employees) {
+    user.age = 30;
+    this.apiserve.changeEmployee(user).subscribe(
+      () => {
+        console.log("Employee " + user.name + " 's age got changed!");
+        if (Error) console.log(Error);
+      });
+      this.setEmployees();
+      this.setEmployees();
   }
 
 }

@@ -28,16 +28,17 @@
       <p>Selected employee's ID = {{ empSelected }}</p>
     </div>        
 
-<app-register (myEvent)="setEmployees()" *ngIf="false"></app-register>
+<app-register (myEvent)="setEmployees()"></app-register>
 <router-outlet></router-outlet>
 
 <table class = "table">
   <tr>
-    <th>ID</th><th>Name</th><th>Age</th><th>Delete</th>
+    <th>ID</th><th>Name</th><th>Age</th><th>Delete</th><th>Update age to default</th>
   </tr>
   <tr *ngFor="let emp of _employeesList">
     <td>{{emp.id}}</td><td>{{emp.name}}</td><td>{{emp.age}}</td>
     <td><button type="button" (click)="removeEmp(emp)" class="btn btn-danger">Delete</button></td>
+    <td><button type="button" (click)="changeEmp(emp)" class="btn btn-success">Update</button></td>
   </tr>
 </table>
 </div>

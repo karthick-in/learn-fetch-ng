@@ -6,10 +6,10 @@ var cors = require("cors");
 var jwt = require("jsonwebtoken");
 
 var connection = mysql.createConnection({
-  host: 'localhost', //'db4free.net',
-  user: 'root', // 'karthickr'
-  password: '',
-  database: 'id12063422_rtest_employees'
+  host: 'db4free.net',
+  user: 'karthickr',
+  password: '11221122',
+  database: 'rtest_employees'
 });
 
 connection.connect(function (err) {
@@ -52,7 +52,7 @@ app.post('/register', (req, res) => {
   })
 })
 
-app.post('/change', (req, res) => {
+app.put('/change', (req, res) => {
   let user = req.body
   console.log("Change req gotten")
   let sql = "update test set age=" + user.age + " where name='" + user.name + "'"
@@ -63,11 +63,12 @@ app.post('/change', (req, res) => {
 })
 
 app.delete('/remove', (req, res) => {
-  let user = req.body
-  console.log("Remove req got!")
+  var user = req.body
+  console.log("Remove req got! " +user.name)
   let sql = "delete from test where name='"+user.name+"'"
   connection.query(sql, function (error, results, fields) {
-	if (error) throw error;
-	console.log("Above user deleted");
+  	if (error) throw error;
+    res.end();
   })
+
 })

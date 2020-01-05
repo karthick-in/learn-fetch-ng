@@ -20,8 +20,10 @@ export class RegisterComponent implements OnInit {
 
   registerNewEmp(){
     this.apiserve.registerEmployee(this.newEmployee).subscribe(res =>{
-        console.log(res);
+        console.log(res);  
         this.myEvent.emit(null);
+        this.newEmployee.name = "";
+        this.newEmployee.age = "";
         this.router.navigate(["/login"]);        
     })
   }
