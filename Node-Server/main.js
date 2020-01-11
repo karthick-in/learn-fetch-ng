@@ -37,7 +37,10 @@ app.get('/', function (req, res) {
 
 app.get('/employees', function (req, res) {
   connection.query('select * from test', function (error, results, fields) {
-    if (error) throw new Error(error);
+    if (error) {
+      console.log("Error occurred from main get : "+ error)
+      // throw new Error(error);
+    }
     res.end(JSON.stringify(results));
   });
 });

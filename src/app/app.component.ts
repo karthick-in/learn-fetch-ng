@@ -12,10 +12,14 @@ export class AppComponent implements OnInit {
   title = 'MyApp';
   _employeesList: Employees[];
   empSelected: Number = 0;
+  time = new Date();
 
   constructor(private apiserve: APIServiceService) { }
 
   ngOnInit() {
+    setInterval(() => {
+      this.time = new Date();
+   }, 1000);
     this.setEmployees();
   }
 
@@ -24,7 +28,6 @@ export class AppComponent implements OnInit {
     this.apiserve.getEmployees().subscribe(data => {
       this._employeesList = data;
     })
-    console.log(this._employeesList);
   }
 
   removeEmp(user: Employees) {
@@ -35,7 +38,7 @@ export class AppComponent implements OnInit {
 
       });
     this.setEmployees();
-    this.setEmployees(); 
+    // this.setEmployees(); 
   }
 
   changeEmp(user: Employees) {
@@ -46,7 +49,7 @@ export class AppComponent implements OnInit {
         if (Error) console.log(Error);
       });
       this.setEmployees();
-      this.setEmployees();
+      // this.setEmployees();
   }
 
 }

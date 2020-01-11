@@ -1,6 +1,7 @@
 <div class="jumbotron">
   <h1 class="display-3">Testing RestAPI</h1>
   <p class="lead">RestAPI data binding app</p>
+  <p>{{ time | date: 'dd-MM-yy hh:mm:ss a' }}</p>
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -28,7 +29,6 @@
       <p>Selected employee's ID = {{ empSelected }}</p>
     </div>        
 
-<app-register (myEvent)="setEmployees()"></app-register>
 <router-outlet></router-outlet>
 
 <table class = "table">

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { APIServiceService } from '../apiservice.service';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-register',
@@ -10,10 +11,11 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   newEmployee = {name:"",age:""};
-  @Output() myEvent = new EventEmitter();
+  // @Output() myEvent = new EventEmitter();
 
   constructor(private apiserve : APIServiceService,
-    private router : Router){ }
+    private router : Router,
+    private appComponent : AppComponent){ }
 
   ngOnInit() {
   }
@@ -21,7 +23,8 @@ export class RegisterComponent implements OnInit {
   registerNewEmp(){
     this.apiserve.registerEmployee(this.newEmployee).subscribe(res =>{
         console.log(res);  
-        this.myEvent.emit(null);
+        this.appComponent.setEmployees();
+        // this.myEvent.emit(null);
         this.newEmployee.name = "";
         this.newEmployee.age = "";
         this.router.navigate(["/login"]);        
