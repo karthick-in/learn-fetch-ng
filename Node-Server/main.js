@@ -6,10 +6,10 @@ var cors = require("cors");
 var jwt = require("jsonwebtoken");
 
 var connection = mysql.createConnection({
-  host: 'db4free.net',
-  user: 'karthickr',
-  password: '11221122',
-  database: 'rtest_employees'
+  host: '',
+  user: '',
+  password: '',
+  database: ''
 });
 
 connection.connect(function (err) {
